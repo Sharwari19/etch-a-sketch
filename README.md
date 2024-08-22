@@ -28,7 +28,7 @@ This project creates an interactive grid of squares where each square progressiv
 
 ```bash
 
-git clone https://github.com/yourusername/your-repository.git
+git clone https://github.com/Sharwari19/etch-a-sketch.git
 
 ```
 
@@ -36,7 +36,7 @@ git clone https://github.com/yourusername/your-repository.git
 
 ```bash
 
-cd your-repository
+cd etch-a-sketch
 
 ```
 
