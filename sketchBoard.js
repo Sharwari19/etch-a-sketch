@@ -9,21 +9,23 @@ buttonDiv.setAttribute("class", "btn-container");
 body.appendChild(buttonDiv);
 
 button.textContent = 'Click For Customizing';
-button.setAttribute("id", "color-btn");
+button.setAttribute("id", "size-btn");
 buttonDiv.appendChild(button);
 
 colorButton.textContent = "Change Color";
-button.setAttribute("id", "size-btn");
+button.setAttribute("id", "color-btn");
 buttonDiv.appendChild(colorButton);
 
+let userSquareInput = 16;   // default value
+let containerSize = 500;
 
-function gridDivsCreation(color = NEON_GREEN_COLOR)
+function gridDivsCreation(color = NEON_GREEN_COLOR, numOfSquare = 16)
 {
-    gridContainer.innerHTML = '';
-    gridContainer.style.width = '500px';
-    gridContainer.style.height = '500px';
-    
-    for(let i = 1; i <= 256; i++)
+    gridContainer.innerHTML = '';   // empty the grid container before creating new grid
+    gridContainer.style.width = `${containerSize}px`;
+    gridContainer.style.height = `${containerSize}px`;
+
+    for(let i = 1; i <= numOfSquare*numOfSquare; i++)
         {
             let hoverCount = 0;
             let currenOpacity = 0.1;
@@ -33,6 +35,8 @@ function gridDivsCreation(color = NEON_GREEN_COLOR)
         
             const gridDiv = document.createElement("div");
             gridDiv.setAttribute("class", "grid-item");
+            gridDiv.style.width =  `${containerSize/numOfSquare}px`;
+            gridDiv.style.height = `${containerSize/ numOfSquare}px`;
             gridContainer.appendChild(gridDiv);
         
             gridDiv.addEventListener('mouseover', () => {
@@ -40,14 +44,8 @@ function gridDivsCreation(color = NEON_GREEN_COLOR)
                 gridDiv.style.backgroundColor = color;
                 hoverCount++;
                 console.log('hoverCount: ', hoverCount);
-        
-                // currentBrightness = currentBrightness - decrement;
-                // if(currentBrightness < 0.1)
-                // {
-                //     currentBrightness = 0.1;
-                // }
-                // gridDiv.style.filter = `brightness(${currentBrightness})`;
-        
+                
+                // make it darker on every hover
                 currenOpacity = currenOpacity + increment;
                 if(currenOpacity  > maxOpacity)
                 {
@@ -66,73 +64,20 @@ function gridDivsCreation(color = NEON_GREEN_COLOR)
         }
 }
 
-let userInput = '';
-let containerWidth = 500;
-let containerHeight = 500;
-
 
 function handleCustomizing()
 {
-    userInput = prompt("Enter the number of squares you want per side for the new grid, should be less than 100");
+    userSquareInput = prompt("Enter the number of squares you want per side for the new grid, should be less than 100");
 
-    while(userInput > 100 || (userInput == null) || (userInput === ''))
+    while(userSquareInput > 100 || (userSquareInput == null) || (userSquareInput === ''))
     {
-        userInput = prompt("Enter a valid input");
+        userSquareInput = prompt("Enter a valid input");
     }
-    console.log('userInput: ', userInput);
 
-    gridContainer.innerHTML = '';
-    gridContainer.style.width = '500px';
-    gridContainer.style.height = '500px';
-    
-    for(let i = 1; i <= userInput*userInput; i++)
-    {
-        let hoverCount = 0;
-        let currenOpacity = 0.1;
-        let maxOpacity = 1;
-        const increment = 0.1;
-        // let currentBrightness = 1;
-
-        const newGridDiv = document.createElement("div");
-        newGridDiv.setAttribute("class", "new-item");
-        newGridDiv.style.width = `${containerWidth/userInput}px`;
-        newGridDiv.style.height = `${containerWidth/userInput}px`;
-        gridContainer.appendChild(newGridDiv);
-        console.log('box-width-height ', containerWidth/userInput);
-        
-
-        newGridDiv.addEventListener('mouseover', () => {
-            newGridDiv.style.backgroundColor = NEON_GREEN_COLOR;
-            hoverCount++;
-            console.log('hoverCount: ', hoverCount);
-
-            // currentBrightness = currentBrightness - decrement;
-            // if(currentBrightness < 0.1)
-            // {
-            //     currentBrightness = 0.1;
-            // }
-            // newGridDiv.style.filter = `brightness(${currentBrightness})`;
-
-            currenOpacity = currenOpacity + increment;
-            if(currenOpacity  > maxOpacity)
-            {
-                currenOpacity = maxOpacity;
-            }
-
-            newGridDiv.style.opacity = `${currenOpacity}`
-
-            if(hoverCount > 9)
-            {
-                newGridDiv.style.backgroundColor = NEON_GREEN_COLOR;
-                hoverCount = 0;
-            }
-        })
-    
-    }
+    console.log('userSquareInput: ', userSquareInput);
+    gridDivsCreation(NEON_GREEN_COLOR, userSquareInput);
 
 }
-
-button.addEventListener('click', handleCustomizing);
 
 function colorToHex(userColor)
 {
@@ -152,11 +97,21 @@ function handleColorChange()
 {
     const userSelColor = prompt("Choose a color between : black, red, lime, maroon or teal");
     const hexValue = colorToHex(userSelColor);
-    gridDivsCreation(hexValue); 
+    console.log('userSquareInput: ', userSquareInput);
+
+    if(hexValue !== "Invalid color name")
+    {
+        gridDivsCreation(hexValue, userSquareInput); 
+    }
+    else
+    {
+        alert("Entered an Invalid color");
+    }
 
 }
 
+button.addEventListener('click', handleCustomizing);
 colorButton.addEventListener('click',  handleColorChange);
 
-
+// initial grid creation with default values
 gridDivsCreation();
