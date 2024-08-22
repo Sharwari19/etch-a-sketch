@@ -1,8 +1,16 @@
 const gridContainer = document.querySelector('.grid-container');
 
-const gridDiv = document.createElement("div");
-gridDiv.setAttribute("class", "grid-item");
-// gridDiv.style.width = '16px';
-// gridDiv.style.height = '16px';
+for(let i = 1; i <= 256; i++)
+{
+    const gridDiv = document.createElement("div");
+    gridDiv.setAttribute("class", "grid-item");
+    gridContainer.appendChild(gridDiv);
+    gridDiv.addEventListener('mouseover', () => {
+        gridDiv.style.backgroundColor = '#006A4E';
+    })
 
-gridContainer.appendChild(gridDiv);
+    gridDiv.addEventListener('mouseout', () => {
+        gridDiv.style.backgroundColor = '#ACE1AF';
+    })
+}
+
