@@ -1,8 +1,22 @@
 const body = document.querySelector("body");
 const gridContainer = document.querySelector('.grid-container');
 const button = document.createElement("button");
+const colorButton = document.createElement("button");
+const buttonDiv = document.createElement("div");
 const DARK_GREEN_COLOR = '#006A4E';
 const NEON_GREEN_COLOR = '#ACE1AF';
+
+buttonDiv.setAttribute("class", "btn-container");
+body.appendChild(buttonDiv);
+
+button.textContent = 'Click For Customizing';
+button.setAttribute("id", "color-btn");
+buttonDiv.appendChild(button);
+
+colorButton.textContent = "Change Color";
+button.setAttribute("id", "size-btn");
+buttonDiv.appendChild(colorButton);
+
 
 for(let i = 1; i <= 256; i++)
 {
@@ -46,8 +60,11 @@ for(let i = 1; i <= 256; i++)
 
 }
 
-body.appendChild(button);
-button.textContent = 'Click For Customizing'
+
+
+
+
+
 let userInput = '';
 let containerWidth = 500;
 let containerHeight = 500;
@@ -114,5 +131,4 @@ function handleCustomizing()
 }
 
 button.addEventListener('click', handleCustomizing);
-
 

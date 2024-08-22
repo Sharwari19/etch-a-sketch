@@ -6,16 +6,23 @@ body
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
-    gap: 100px;
-    margin-top: 0px;
+}
+
+.btn-container
+{
+    margin-top: 10px;
+    display: flex;
+    gap: 50px;
 }
 
 button
 {
+    margin-top: 10px;
     background-color: black;
     color: #ACE1AF;
     padding: 12px;
     border-radius: 3px;
+
 }
 
 .grid-container
@@ -27,6 +34,7 @@ button
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0px;
+    margin-top: 50px;
 }
 
 .new-container
