@@ -60,11 +60,6 @@ for(let i = 1; i <= 256; i++)
 
 }
 
-
-
-
-
-
 let userInput = '';
 let containerWidth = 500;
 let containerHeight = 500;
@@ -72,10 +67,11 @@ let containerHeight = 500;
 
 function handleCustomizing()
 {
-    userInput = prompt("Enter the number of squares you want per side for the new grid");
-    if(userInput > 100)
+    userInput = prompt("Enter the number of squares you want per side for the new grid, should be less than 100");
+
+    while(userInput > 100 || (userInput == null) || (userInput === ''))
     {
-        userInput = prompt("Number of squares should be less than 100");
+        userInput = prompt("Enter a valid input");
     }
     console.log('userInput: ', userInput);
 
@@ -131,4 +127,6 @@ function handleCustomizing()
 }
 
 button.addEventListener('click', handleCustomizing);
+
+
 
