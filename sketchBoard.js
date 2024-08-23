@@ -2,11 +2,10 @@ const body = document.querySelector("body");
 const gridContainer = document.querySelector('.grid-container');
 const button = document.createElement("button");
 const colorButton = document.createElement("button");
+const clearButton = document.createElement("button");
 const buttonDiv = document.createElement("div");
+const buttonGridDiv = document.createElement("div");
 const NEON_GREEN_COLOR = '#ACE1AF';
-
-buttonDiv.setAttribute("class", "btn-container");
-body.appendChild(buttonDiv);
 
 button.textContent = 'Click For Customizing';
 button.setAttribute("id", "size-btn");
@@ -16,14 +15,29 @@ colorButton.textContent = "Change Color";
 button.setAttribute("id", "color-btn");
 buttonDiv.appendChild(colorButton);
 
-let userSquareInput = 16;   // default value
-let containerSize = 500;
+clearButton.textContent = "Clear Grid";
+clearButton.setAttribute("id", "clear-btn");
+buttonDiv.appendChild(clearButton);
 
-function gridDivsCreation(color = NEON_GREEN_COLOR, numOfSquare = 16)
+buttonGridDiv.setAttribute("class", "grid-btn-container");
+body.appendChild(buttonGridDiv);
+
+buttonDiv.setAttribute("class", "btn-container");
+buttonGridDiv.appendChild(buttonDiv);
+
+buttonGridDiv.appendChild(gridContainer);
+
+let userSquareInput = 16;   // default value
+let color = NEON_GREEN_COLOR;
+let containerSize = 590;
+
+
+function gridDivsCreation(color, numOfSquare)
 {
     gridContainer.innerHTML = '';   // empty the grid container before creating new grid
     gridContainer.style.width = `${containerSize}px`;
     gridContainer.style.height = `${containerSize}px`;
+    gridContainer.style.border = '3px solid black';
 
     for(let i = 1; i <= numOfSquare*numOfSquare; i++)
         {
@@ -75,7 +89,7 @@ function handleCustomizing()
     }
 
     console.log('userSquareInput: ', userSquareInput);
-    gridDivsCreation(NEON_GREEN_COLOR, userSquareInput);
+    gridDivsCreation(color, userSquareInput);
 
 }
 
@@ -96,12 +110,12 @@ function colorToHex(userColor)
 function handleColorChange()
 {
     const userSelColor = prompt("Choose a color between : black, red, lime, maroon or teal");
-    const hexValue = colorToHex(userSelColor);
+    color = colorToHex(userSelColor);
     console.log('userSquareInput: ', userSquareInput);
 
-    if(hexValue !== "Invalid color name")
+    if(color !== "Invalid color name")
     {
-        gridDivsCreation(hexValue, userSquareInput); 
+        gridDivsCreation(color, userSquareInput); 
     }
     else
     {
@@ -110,8 +124,14 @@ function handleColorChange()
 
 }
 
+function handleClearGrid()
+{
+   gridDivsCreation(color, userSquareInput);
+}
+
 button.addEventListener('click', handleCustomizing);
 colorButton.addEventListener('click',  handleColorChange);
+clearButton.addEventListener('click', handleClearGrid);
 
 // initial grid creation with default values
-gridDivsCreation();
+gridDivsCreation(color, userSquareInput);
