@@ -27,16 +27,18 @@ h1
 button
 {
     margin-top: 10px;
-    background-color: black;
-    color: #ACE1AF;
+    background-color: white;
+    color: #47b14d;
     padding: 12px;
     border-radius: 10px;
-    border: 1px solid white;
+    border: 1px solid black;
 }
 
 button:hover
 {
     transform:scale(1.1);
+    background-color: #47b14d;
+    color: white;
 }
 
 .grid-container
