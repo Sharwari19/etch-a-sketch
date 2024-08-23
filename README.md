@@ -4,13 +4,13 @@ This project creates an interactive grid of squares where each square progressiv
 
 ## Features
 
-* # Interactive Grid : A grid of square divs that change color and opacity on mouse hover.
+* #### Interactive Grid : A grid of square divs that change color and opacity on mouse hover.
 
-* # Progressive Darkening: Each square darkens progressively with each hover interaction until it reaches a certain darkness level
+* #### Progressive Darkening: Each square darkens progressively with each hover interaction until it reaches a certain darkness level
 
-* # Customizable Grid Size: Users can specify the number of squares per side to dynamically resize the grid.
+* #### Customizable Grid Size: Users can specify the number of squares per side to dynamically resize the grid.
 
-* # Clear Grid: The grid can be cleared at any time to reset all squares to their original blank state, providing a fresh canvas for further interactions.
+* #### Clear Grid: The grid can be cleared at any time to reset all squares to their original blank state, providing a fresh canvas for further interactions.
 
 ## Technologies Used
 
