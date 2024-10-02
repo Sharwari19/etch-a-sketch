@@ -4,7 +4,7 @@ This project creates an interactive grid of squares where each square progressiv
 
 ## Live Preview
 
-You can check out the live version of the Etch-a-Sketch project [here](https://your-live-preview-link.com).
+You can check out the live version of the Etch-a-Sketch project [here](https://sharwari19.github.io/etch-a-sketch/).
 
 ## Features
 
