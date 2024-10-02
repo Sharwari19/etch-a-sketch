@@ -1,6 +1,10 @@
 # etch-a-sketch
 
-This project creates an interactive grid of squares where each square progressively darkens upon hover. Users can customize the grid size through a button, which prompts them to enter the number of squares per side.
+This project creates an interactive grid of squares where each square progressively darkens upon hover. Users can customize the grid size through a button, which prompts them to enter the number of squares per side. 
+
+## Live Preview
+
+You can check out the live version of the Etch-a-Sketch project [here](https://your-live-preview-link.com).
 
 ## Features
 
